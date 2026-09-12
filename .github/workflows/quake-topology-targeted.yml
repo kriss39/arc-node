@@ -14,5 +14,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends libclang-dev zlib1g-dev
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          cache-shared-key: rust-build
       - name: Run triangle topology regression test
         run: cargo test --locked -p quake --no-default-features triangle_topology_is_connected -- --nocapture
