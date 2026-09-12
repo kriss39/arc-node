@@ -344,6 +344,27 @@ mod tests {
     }
 
     #[test]
+    fn triangle_topology_is_connected() {
+        let node_subnets: IndexMap<NodeName, Vec<SubnetName>> = [
+            (
+                "bridge_bc".to_string(),
+                vec!["B".to_string(), "C".to_string()],
+            ),
+            (
+                "bridge_ac".to_string(),
+                vec!["A".to_string(), "C".to_string()],
+            ),
+            (
+                "bridge_ab".to_string(),
+                vec!["A".to_string(), "B".to_string()],
+            ),
+        ]
+        .into();
+
+        assert!(Subnets::new(&node_subnets).validate_topology().is_ok());
+    }
+
+    #[test]
     fn cidr_map_returns_correct_blocks() {
         let node_subnets: IndexMap<NodeName, Vec<SubnetName>> = [
             ("node1".to_string(), vec!["A".to_string()]),
