@@ -15,4 +15,4 @@ jobs:
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Run triangle topology regression test
-        run: cargo test --locked -p quake triangle_topology_is_connected -- --nocapture
+        run: cargo test --locked -p quake --no-default-features triangle_topology_is_connected -- --nocapture
